@@ -12,7 +12,8 @@ import AddMovieForm from './components/AddMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
 const App = props => {
-  const displayFavorites = true;
+  // const displayFavorites = true;
+  const { displayFavorites } = props;
 
   return (
     <div>
@@ -48,4 +49,10 @@ const App = props => {
   );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  return{
+    displayFavorites: state.favoritesReducer.displayFavorites
+  }
+}
+
+export default connect(mapStateToProps)(App);

@@ -23,10 +23,14 @@ const AddMovieForm = (props) => {
     }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+        props.addMovie(movie);
+        push("/movies")
     }
 
     const { title, director, genre, metascore, description } = movie;
-    return(<div className="col">
+    return(
+    <div className="col">
         <div className="modal-dialog">
             <div className="modal-content">
                 <form onSubmit={handleSubmit}>
@@ -67,4 +71,4 @@ const AddMovieForm = (props) => {
     </div>);
 }
 
-export default AddMovieForm;
+export default connect(null, { addMovie })(AddMovieForm);
